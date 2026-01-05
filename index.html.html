@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FARM2STAKE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Arial;background:#f4f6f5;transition:all 0.3s}
+.page{display:none;min-height:100vh;opacity:0;transition:opacity 0.7s ease}
+.show{display:block;opacity:1}
+header{background:#0f9d58;color:white;padding:15px;font-size:20px}
+button{padding:12px 20px;background:#ff9f00;border:none;border-radius:6px;margin:6px;font-size:16px;cursor:pointer;transition:0.3s}
+button:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+.hero{height:100vh;position:relative;color:white}
+.hero img{width:100%;height:100%;object-fit:cover;transition:0.5s}
+.heroText{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:15px;padding:15px}
+.card{background:white;padding:15px;border-radius:10px;transition:0.3s;cursor:pointer}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,0.2)}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:6px;transition:0.3s}
+.card img:hover{opacity:0.9}
+.review{background:#eef5e9;padding:6px;margin:5px 0;border-radius:4px;font-size:13px}
+.chatArea{height:65vh;background:#eee;padding:10px;overflow:auto}
+input,textarea{width:100%;padding:10px;margin:6px 0}
+label{font-size:13px;color:#00695c;cursor:pointer}
+#map{width:100%;max-width:800px;height:300px;margin:20px auto;border:2px solid #0f9d58;border-radius:12px;
+background:url('https://upload.wikimedia.org/wikipedia/commons/9/9c/Tamil_Nadu_in_India.svg') no-repeat center/contain;
+position:relative;}
+.marker{position:absolute;background:red;width:14px;height:14px;border-radius:50%;cursor:pointer;transition:0.2s}
+.marker:hover{transform:scale(1.5)}
+.marker:hover::after{content:attr(data-name);position:absolute;top:-22px;left:-10px;background:rgba(0,0,0,0.7);color:white;padding:3px 6px;border-radius:5px;font-size:12px}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="home" class="page show">
+<div class="hero">
+<img id="heroImg" src="https://via.placeholder.com/1200x700?text=Change+Homepage+Farmer+Image">
+<div class="heroText">
+<h1 style="font-size:60px">FARM2STAKE</h1>
+<p>Direct Farmer → Consumer Platform</p>
+<label style="background:white;color:black;padding:6px;border-radius:6px">
+ Change Homepage Image
+ <input type="file" hidden accept="image/*" onchange="changeImg(event,'heroImg')">
+</label>
+<br><br>
+<button onclick="go('more')">MORE</button>
+</div>
+</div>
+
+<div style="padding:40px;text-align:center">
+<h2>WHY YOU HAVE TO CHOOSE US</h2>
+<p>No middlemen • Tamil Nadu farmers • Fair prices • Fresh produce • Direct chat</p>
+</div>
+
+<!-- TN Farmers Map -->
+<div id="map"></div>
+</div>
+
+<!-- MORE / EXPLORE -->
+<div id="more" class="page">
+<div style="position:relative;height:70vh">
+<img id="moreBg" src="https://via.placeholder.com/1200x700?text=Change+Explore+Background"
+style="width:100%;height:100%;object-fit:cover">
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+background:rgba(0,0,0,0.55);padding:30px;border-radius:14px;text-align:center">
+<h1 style="color:white">Explore FARM2STAKE</h1>
+<button style="width:230px" onclick="go('products')">🛒 Products</button><br>
+<button style="width:230px" onclick="go('cart')">🧺 Cart</button><br>
+<button style="width:230px" onclick="go('orders')">📦 Order History</button><br>
+<button style="width:230px" onclick="go('home')">⬅ Home</button>
+<br><br>
+<label style="background:white;padding:6px;border-radius:6px">
+ Change Background Image
+ <input type="file" hidden accept="image/*" onchange="changeImg(event,'moreBg')">
+</label>
+</div>
+</div>
+
+<div style="padding:40px;text-align:center">
+<img id="moreExtraImg" src="https://via.placeholder.com/600x350?text=Change+Extra+Image"
+style="max-width:100%;border-radius:12px">
+<br><br>
+<label style="background:#0f9d58;color:white;padding:8px;border-radius:6px">
+ Change Extra Image
+ <input type="file" hidden accept="image/*" onchange="changeImg(event,'moreExtraImg')">
+</label>
+</div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products" class="page">
+<header>Products <button onclick="go('cart')">🛒</button></header>
+<div class="products" id="productList"></div>
+<button onclick="go('more')">⬅ Back</button>
+</div>
+
+<!-- CART -->
+<div id="cart" class="page">
+<header>Cart</header>
+<div style="padding:20px">
+<div id="cartItems"></div>
+<h3 id="total"></h3>
+<button onclick="checkout()">Checkout</button>
+<button onclick="go('more')">Back</button>
+</div>
+</div>
+
+<!-- ORDERS -->
+<div id="orders" class="page">
+<header>Order History</header>
+<div style="padding:20px" id="orderHistory"></div>
+<button onclick="go('more')">Back</button>
+</div>
+
+<!-- CHAT -->
+<div id="chat" class="page">
+<header id="chatTitle">Chat</header>
+<div class="chatArea" id="chatBox">
+<p><b>Farmer:</b> Vanakkam! 👋</p>
+</div>
+<textarea id="msg" placeholder="Type message..."></textarea>
+<button onclick="sendMsg()">Send</button>
+<button onclick="go('products')">Close</button>
+</div>
+
+<script>
+// Products & reviews
+const products=[
+ ["Tomatoes","Ramesh","Chennai",40],
+ ["Bananas","Karthik","Erode",50],
+ ["Rice","Ravi","Villupuram",60],
+ ["Spinach","Muthu","Thanjavur",25],
+ ["Onions","Siva","Madurai",35],
+ ["Potatoes","Arun","Coimbatore",30],
+ ["Groundnuts","Balaji","Tirunelveli",90],
+ ["Carrots","Senthil","Salem",45],
+ ["Mangoes","Prasad","Krishnagiri",80],
+ ["Coconut","Anand","Pollachi",55],
+ ["Turmeric","Murugan","Erode",120],
+ ["Millets","Gopal","Namakkal",70]
+];
+const reviews=["Fresh","Very good","Organic","Worth it","Highly recommended"];
+let cart=[];
+let orders=JSON.parse(localStorage.getItem("orders")||"[]");
+
+function go(p){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('show'));
+ document.getElementById(p).classList.add('show');
+ if(p==="orders") loadOrders();
+}
+
+function loadProducts(){
+ let html="";
+ products.forEach((p,i)=>{
+ html+=`
+ <div class="card">
+ <img id="prod${i}" src="https://via.placeholder.com/300x200?text=${p[0]}">
+ <label>
+  Change Image
+  <input type="file" hidden accept="image/*" onchange="changeImg(event,'prod${i}')">
+ </label>
+ <h3>${p[0]}</h3>
+ <p>👨‍🌾 ${p[1]} – ${p[2]}, TN</p>
+ <p>₹${p[3]}/kg ⭐4.7 ✔</p>
+ <button onclick="addToCart('${p[0]}',${p[3]})">Add to Cart</button>
+ <button onclick="openChat('${p[1]}')">Chat</button>
+ <details>
+ <summary>Customer Reviews</summary>
+ ${reviews.map(r=>`<div class="review">⭐5 ${r}</div>`).join("")}
+ </details>
+ </div>`;
+ });
+ document.getElementById("productList").innerHTML=html;
+}
+
+function addToCart(name,price){ cart.push({name,price}); updateCart(); }
+function updateCart(){
+ document.getElementById("cartItems").innerHTML=
+ cart.map(c=>`${c.name} – ₹${c.price}`).join("<br>");
+ document.getElementById("total").innerText=
+ "Total: ₹"+cart.reduce((a,b)=>a+b.price,0);
+}
+function checkout(){
+ orders.push({date:new Date().toLocaleString(),items:cart});
+ localStorage.setItem("orders",JSON.stringify(orders));
+ cart=[];
+ alert("Order placed successfully!");
+ go('home');
+}
+function loadOrders(){
+ document.getElementById("orderHistory").innerHTML=
+ orders.map(o=>`<div class="card"><b>${o.date}</b><br>${o.items.map(i=>i.name).join(", ")}</div>`).join("");
+}
+function openChat(name){
+ document.getElementById("chatTitle").innerText="Chat with "+name;
+ go('chat');
+}
+function sendMsg(){
+ let m=document.getElementById("msg").value;
+ if(!m) return;
+ document.getElementById("chatBox").innerHTML+=`<p><b>You:</b> ${m}</p>`;
+ document.getElementById("msg").value="";
+}
+
+// Persistent Image Change
+function changeImg(e,id){
+ const f = e.target.files[0];
+ if(f){
+   const url = URL.createObjectURL(f);
+   document.getElementById(id).src = url;
+
+   // Save image as Base64 in localStorage
+   const reader = new FileReader();
+   reader.onload = function(event){
+     localStorage.setItem(id, event.target.result);
+   }
+   reader.readAsDataURL(f);
+ }
+}
+
+// Load saved images on page load
+window.addEventListener('load', () => {
+ const imageIds = ["heroImg","moreBg","moreExtraImg"];
+ for(let i=0;i<12;i++) imageIds.push("prod"+i); // product images
+ imageIds.forEach(id=>{
+   const saved = localStorage.getItem(id);
+   if(saved){
+     const img = document.getElementById(id);
+     if(img) img.src = saved;
+   }
+ });
+});
+
+loadProducts();
+
+// TN Farmers Map
+const farmers=[
+{name:"Ramesh",city:"Chennai"},
+{name:"Karthik",city:"Erode"},
+{name:"Ravi",city:"Villupuram"},
+{name:"Muthu",city:"Thanjavur"},
+{name:"Siva",city:"Madurai"},
+{name:"Arun",city:"Coimbatore"},
+{name:"Balaji",city:"Tirunelveli"},
+{name:"Senthil",city:"Salem"},
+{name:"Prasad",city:"Krishnagiri"},
+{name:"Anand",city:"Pollachi"},
+{name:"Murugan",city:"Erode"},
+{name:"Gopal",city:"Namakkal"}
+];
+const map=document.getElementById("map");
+map.style.position="relative";
+const cityPositions={ // approximate positions inside map container %
+"Chennai":[85,10],"Erode":[30,35],"Villupuram":[70,20],"Thanjavur":[65,35],
+"Madurai":[55,65],"Coimbatore":[25,50],"Tirunelveli":[40,80],"Salem":[35,30],
+"Krishnagiri":[50,15],"Pollachi":[20,65],"Namakkal":[40,25]
+};
+farmers.forEach(f=>{
+ let m=document.createElement("div");
+ m.className="marker";
+ m.dataset.name=f.name+" - "+f.city;
+ let pos=cityPositions[f.city]||[50,50];
+ m.style.left=pos[0]+"%";
+ m.style.top=pos[1]+"%";
+ map.appendChild(m);
+});
+</script>
+
+</body>
+</html>
