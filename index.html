@@ -266,8 +266,7 @@ farmers.forEach(f=>{
  m.style.top=pos[1]+"%";
  map.appendChild(m);
 });
-</script>
- <script>
+<script>
 function saveCurrentImage(imgId) {
   const img = document.getElementById(imgId);
   if (!img || !img.src) {
@@ -277,7 +276,7 @@ function saveCurrentImage(imgId) {
 
   const a = document.createElement("a");
   a.href = img.src;
-  a.download = imgId + ".png";
+  a.download = imgId + ".png";  // filename will be imgId.png
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -285,5 +284,6 @@ function saveCurrentImage(imgId) {
 </script>
 </body>
 </html>
+
 
 
