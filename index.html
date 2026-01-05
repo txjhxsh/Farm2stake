@@ -268,10 +268,16 @@ farmers.forEach(f=>{
 });
 </script>
  <script>
-function downloadImage(imageUrl) {
+function saveCurrentImage(imgId) {
+  const img = document.getElementById(imgId);
+  if (!img || !img.src) {
+    alert("Image not available");
+    return;
+  }
+
   const a = document.createElement("a");
-  a.href = imageUrl;
-  a.download = imageUrl.split("/").pop();
+  a.href = img.src;
+  a.download = imgId + ".png";
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -279,4 +285,5 @@ function downloadImage(imageUrl) {
 </script>
 </body>
 </html>
+
 
