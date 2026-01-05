@@ -267,25 +267,9 @@ farmers.forEach(f=>{
  map.appendChild(m);
 });
 <button onclick="saveCurrentImage('heroImg')">💾 Save Image</button>
-
-<script>
-function saveCurrentImage(imgId) {
-  const img = document.getElementById(imgId);
-  if (!img || !img.src) {
-    alert("Image not available");
-    return;
-  }
-
-  const a = document.createElement("a");
-  a.href = img.src;
-  a.download = imgId + ".png"; // saves your uploaded image
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-</script>
 </body>
 </html>
+
 
 
 
