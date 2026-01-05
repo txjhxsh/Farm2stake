@@ -266,6 +266,8 @@ farmers.forEach(f=>{
  m.style.top=pos[1]+"%";
  map.appendChild(m);
 });
+<button onclick="saveCurrentImage('heroImg')">💾 Save Image</button>
+
 <script>
 function saveCurrentImage(imgId) {
   const img = document.getElementById(imgId);
@@ -276,7 +278,7 @@ function saveCurrentImage(imgId) {
 
   const a = document.createElement("a");
   a.href = img.src;
-  a.download = imgId + ".png";  // filename will be imgId.png
+  a.download = imgId + ".png"; // saves your uploaded image
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -284,6 +286,7 @@ function saveCurrentImage(imgId) {
 </script>
 </body>
 </html>
+
 
 
 
