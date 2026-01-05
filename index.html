@@ -267,6 +267,16 @@ farmers.forEach(f=>{
  map.appendChild(m);
 });
 </script>
-
+ <script>
+function downloadImage(imageUrl) {
+  const a = document.createElement("a");
+  a.href = imageUrl;
+  a.download = imageUrl.split("/").pop();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+</script>
 </body>
 </html>
+
