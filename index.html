@@ -126,16 +126,21 @@ style="max-width:100%;border-radius:12px">
 <button onclick="go('products')">Close</button>
 </div>
  <!-- FOUNDERS PAGE -->
+<!-- FOUNDERS PAGE -->
 <div id="founders" class="page">
   <header>Team Teen Titans</header>
 
   <div style="padding:30px;text-align:center">
 
     <div class="card">
-      <img id="founder1" src="https://via.placeholder.com/150">
+      <img id="founder1"
+           src="https://via.placeholder.com/150?text=Founder"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;">
+      <br>
       <label>
         Add / Change Image
-        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder1')">
+        <input type="file" hidden accept="image/*"
+               onchange="changeImg(event,'founder1')">
       </label>
       <h3>A.S. Tejhashwini</h3>
       <p><b>Founder</b></p>
@@ -143,10 +148,14 @@ style="max-width:100%;border-radius:12px">
     </div>
 
     <div class="card">
-      <img id="founder2" src="https://via.placeholder.com/150">
+      <img id="founder2"
+           src="https://via.placeholder.com/150?text=Co-Founder"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;">
+      <br>
       <label>
         Add / Change Image
-        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder2')">
+        <input type="file" hidden accept="image/*"
+               onchange="changeImg(event,'founder2')">
       </label>
       <h3>K.S. Vibhooshitha</h3>
       <p><b>Co-Founder</b></p>
@@ -154,10 +163,14 @@ style="max-width:100%;border-radius:12px">
     </div>
 
     <div class="card">
-      <img id="founder3" src="https://via.placeholder.com/150">
+      <img id="founder3"
+           src="https://via.placeholder.com/150?text=Developer"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;">
+      <br>
       <label>
         Add / Change Image
-        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder3')">
+        <input type="file" hidden accept="image/*"
+               onchange="changeImg(event,'founder3')">
       </label>
       <h3>S. Lavanya Soundhariya</h3>
       <p><b>Assistant Developer</b></p>
@@ -312,6 +325,7 @@ farmers.forEach(f=>{
 
 </body>
 </html>
+
 
 
 
