@@ -70,6 +70,7 @@ background:rgba(0,0,0,0.55);padding:30px;border-radius:14px;text-align:center">
 <button style="width:230px" onclick="go('cart')">🧺 Cart</button><br>
 <button style="width:230px" onclick="go('orders')">📦 Order History</button><br>
 <button style="width:230px" onclick="go('home')">⬅ Home</button>
+ <button style="width:230px" onclick="go('founders')">👥 Founders</button><br>
 <br><br>
 <label style="background:white;padding:6px;border-radius:6px">
  Change Background Image
@@ -124,7 +125,48 @@ style="max-width:100%;border-radius:12px">
 <button onclick="sendMsg()">Send</button>
 <button onclick="go('products')">Close</button>
 </div>
+ <!-- FOUNDERS PAGE -->
+<div id="founders" class="page">
+  <header>Team Teen Titans</header>
 
+  <div style="padding:30px;text-align:center">
+
+    <div class="card">
+      <img id="founder1" src="https://via.placeholder.com/150">
+      <label>
+        Add / Change Image
+        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder1')">
+      </label>
+      <h3>A.S. Tejhashwini</h3>
+      <p><b>Founder</b></p>
+      <p>📧 jxst.t3j@gmail.com</p>
+    </div>
+
+    <div class="card">
+      <img id="founder2" src="https://via.placeholder.com/150">
+      <label>
+        Add / Change Image
+        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder2')">
+      </label>
+      <h3>K.S. Vibhooshitha</h3>
+      <p><b>Co-Founder</b></p>
+      <p>📧 vibuv85@gmail.com</p>
+    </div>
+
+    <div class="card">
+      <img id="founder3" src="https://via.placeholder.com/150">
+      <label>
+        Add / Change Image
+        <input hidden type="file" accept="image/*" onchange="changeImg(event,'founder3')">
+      </label>
+      <h3>S. Lavanya Soundhariya</h3>
+      <p><b>Assistant Developer</b></p>
+    </div>
+
+    <br>
+    <button onclick="go('more')">⬅ Back</button>
+  </div>
+</div>
 <script>
 // Products & reviews
 const products=[
@@ -270,11 +312,6 @@ farmers.forEach(f=>{
 
 </body>
 </html>
-
-
-
-
-
 
 
 
