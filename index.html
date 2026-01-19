@@ -32,7 +32,10 @@ position:relative;}
 </style>
 </head>
 <body>
-
+ <header style="background:#0f9d58;color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;">
+  <b>FARM2STAKE</b>
+  <button onclick="saveAllImages()">💾 Save Changes</button>
+</header>
 <!-- HOME -->
 <div id="home" class="page show">
 <div class="hero">
@@ -318,10 +321,14 @@ farmers.forEach(f=>{
  m.style.top=pos[1]+"%";
  map.appendChild(m);
 });
+ function saveChanges(){
+  alert("All changes are already saved successfully ✅");
+}
 </script>
 
 </body>
 </html>
+
 
 
 
