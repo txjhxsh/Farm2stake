@@ -34,9 +34,9 @@ position:relative;}
 <body>
 
 <!-- HOME -->
-<div id="home" class="page show">
+<div id="home" class="page">
 <div class="hero">
-<img id="heroImg" src="https://via.placeholder.com/1200x700?text=Change+Homepage+Farmer+Image">
+<img id="heroImg" src="./guru-moorthy-gokul--tdqorDOxgc-unsplash.jpg">
 <div class="heroText">
 <h1 style="font-size:60px">FARM2STAKE</h1>
 <p>Direct Farmer → Consumer Platform</p>
@@ -61,7 +61,7 @@ position:relative;}
 <!-- MORE / EXPLORE -->
 <div id="more" class="page">
 <div style="position:relative;height:70vh">
-<img id="moreBg" src="https://via.placeholder.com/1200x700?text=Change+Explore+Background"
+<img id="moreBg" src="./sandy-zebua-a7n65pmnJ4Q-unsplash.jpg"
 style="width:100%;height:100%;object-fit:cover">
 <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
 background:rgba(0,0,0,0.55);padding:30px;border-radius:14px;text-align:center">
@@ -69,6 +69,7 @@ background:rgba(0,0,0,0.55);padding:30px;border-radius:14px;text-align:center">
 <button style="width:230px" onclick="go('products')">🛒 Products</button><br>
 <button style="width:230px" onclick="go('cart')">🧺 Cart</button><br>
 <button style="width:230px" onclick="go('orders')">📦 Order History</button><br>
+<button style="width:230px" onclick="go('founders')">👥 Founders</button><br>
 <button style="width:230px" onclick="go('home')">⬅ Home</button>
 <br><br>
 <label style="background:white;padding:6px;border-radius:6px">
@@ -124,22 +125,73 @@ style="max-width:100%;border-radius:12px">
 <button onclick="sendMsg()">Send</button>
 <button onclick="go('products')">Close</button>
 </div>
+ <!-- FOUNDERS PAGE -->
+<!-- FOUNDERS PAGE -->
+<div id="founders" class="page" style="background:black !important; color:white !important; min-height:100vh;">
+ <header style="text-align:center;font-size:2em;margin-top:20px;color:white !important;background:black;padding:20px;">Team Teen Titans</header>
+ <div style="padding:30px;text-align:center;">
 
+    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
+      <img id="founder1"
+           src="https://via.placeholder.com/150?text=Founder"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
+      <br>
+      <label>
+        Add / Change Image
+        <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder1')">
+      </label>
+      <h3 style="margin:10px 0; color:white !important;">A.S. Tejhashwini</h3>
+      <p style="color:white !important;"><b>Founder</b></p>
+      <p style="color:white !important;">📧 jxst.t3j@gmail.com</p>
+    </div>
+
+    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
+      <img id="founder2"
+           src="https://via.placeholder.com/150?text=Co-Founder"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
+      <br>
+      <label>
+        Add / Change Image
+        <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder2')">
+      </label>
+      <h3 style="margin:10px 0; color:white !important;">K.S. Vibhooshitha</h3>
+      <p style="color:white !important;"><b>Co-Founder</b></p>
+      <p style="color:white !important;">📧 vibuv85@gmail.com</p>
+    </div>
+
+    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
+      <img id="founder3"
+           src="https://via.placeholder.com/150?text=Developer"
+           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
+      <br>
+      <label>
+        Add / Change Image
+        <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder3')">
+      </label>
+      <h3 style="margin:10px 0; color:white !important;">S. Lavanya</h3>
+      <p style="color:white !important;"><b>Assistant Developer</b></p>
+      <p style="color:white !important;">📧 lavanyasoundhariya67@gmail.com</p>
+    </div>
+
+    <br>
+    <button onclick="go('more')" style="margin-top:20px; padding:10px 20px; font-size:1em; cursor:pointer; background:#444; color:white !important; border:none; border-radius:5px;">⬅ Back</button>
+  </div>
+</div>
 <script>
 // Products & reviews
 const products=[
- ["Tomatoes","Ramesh","Chennai",40],
- ["Bananas","Karthik","Erode",50],
- ["Rice","Ravi","Villupuram",60],
+ ["Tomatoes","Sathanaa","Trichy",39],
+ ["Bananas","Karthik","Erode",49],
+ ["Rice","Ravi","Villupuram",59],
  ["Spinach","Muthu","Thanjavur",25],
- ["Onions","Siva","Madurai",35],
- ["Potatoes","Arun","Coimbatore",30],
- ["Groundnuts","Balaji","Tirunelveli",90],
- ["Carrots","Senthil","Salem",45],
- ["Mangoes","Prasad","Krishnagiri",80],
- ["Coconut","Anand","Pollachi",55],
- ["Turmeric","Murugan","Erode",120],
- ["Millets","Gopal","Namakkal",70]
+ ["Onions","Siva","Madurai",29],
+ ["Potatoes","Arun","Coimbatore",29],
+ ["Groundnuts","Balaji","Tirunelveli",89],
+ ["Carrots","Lavanya Gopal","Ooty",69],
+ ["Mangoes","Senthil","Salem",79],
+ ["Coconut","Jashwantt","Trichy",67],
+ ["Turmeric","Murugan","Erode",119],
+ ["Millets","Gopal","Namakkal",69]
 ];
 const reviews=["Fresh","Very good","Organic","Worth it","Highly recommended"];
 let cart=[];
@@ -253,9 +305,9 @@ const farmers=[
 const map=document.getElementById("map");
 map.style.position="relative";
 const cityPositions={ // approximate positions inside map container %
-"Chennai":[85,10],"Erode":[30,35],"Villupuram":[70,20],"Thanjavur":[65,35],
+"Trichy":[85,10],"Erode":[30,35],"Villupuram":[70,20],"Thanjavur":[65,35],
 "Madurai":[55,65],"Coimbatore":[25,50],"Tirunelveli":[40,80],"Salem":[35,30],
-"Krishnagiri":[50,15],"Pollachi":[20,65],"Namakkal":[40,25]
+"Ooty":[50,15],"Trichy":[20,65],"Namakkal":[40,25]
 };
 farmers.forEach(f=>{
  let m=document.createElement("div");
@@ -267,7 +319,27 @@ farmers.forEach(f=>{
  map.appendChild(m);
 });
 </script>
-
+<script>
+go('home');
+</script>
 </body>
 </html>
+                                   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       how many type of software launage did this code uses
