@@ -126,55 +126,110 @@ style="max-width:100%;border-radius:12px">
 <button onclick="go('products')">Close</button>
 </div>
  <!-- FOUNDERS PAGE -->
-<!-- FOUNDERS PAGE -->
-<div id="founders" class="page" style="background:black !important; color:white !important; min-height:100vh;">
- <header style="text-align:center;font-size:2em;margin-top:20px;color:white !important;background:black;padding:20px;">Team Teen Titans</header>
- <div style="padding:30px;text-align:center;">
+<style>
+/* ===== Professional Animations ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  animation: fadeUp 1s ease forwards;
+}
+
+.card {
+  background: #1e1e1e !important;
+  padding: 25px;
+  width: 260px;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(255,255,255,0.08);
+}
+
+.card img {
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+label {
+  font-size: 0.85em;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+header span {
+  font-size: 0.6em;
+  opacity: 0.8;
+  display: block;
+  margin-top: 5px;
+}
+</style>
+
+<div id="founders" class="page" style="background:black !important; color:white !important; min-height:100vh;">
+  
+  <header style="text-align:center;font-size:2.2em;color:white;background:black;padding:30px;">
+    Team Teen Titans
+    <span>Founding Team – Farm2Stake</span>
+  </header>
+
+  <div class="team-container">
+
+    <!-- Founder -->
+    <div class="card">
       <img id="founder1"
            src="https://via.placeholder.com/150?text=Founder"
-           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
-      <br>
+           style="width:150px;height:150px;object-fit:cover;margin:auto;">
+      <br><br>
       <label>
         Add / Change Image
         <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder1')">
       </label>
-      <h3 style="margin:10px 0; color:white !important;">A.S. Tejhashwini</h3>
-      <p style="color:white !important;"><b>Founder</b></p>
-      <p style="color:white !important;">📧 jxst.t3j@gmail.com</p>
+      <h3 style="margin:15px 0 5px;">A.S. Tejhashwini</h3>
+      <p><b>Founder</b></p>
+      <p style="opacity:0.85;">📧 jxst.t3j@gmail.com</p>
     </div>
 
-    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
+    <!-- Co-Founder -->
+    <div class="card">
       <img id="founder2"
            src="https://via.placeholder.com/150?text=Co-Founder"
-           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
-      <br>
+           style="width:150px;height:150px;object-fit:cover;margin:auto;">
+      <br><br>
       <label>
         Add / Change Image
         <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder2')">
       </label>
-      <h3 style="margin:10px 0; color:white !important;">K.S. Vibhooshitha</h3>
-      <p style="color:white !important;"><b>Co-Founder</b></p>
-      <p style="color:white !important;">📧 vibuv85@gmail.com</p>
+      <h3 style="margin:15px 0 5px;">K.S. Vibhooshitha</h3>
+      <p><b>Co-Founder</b></p>
+      <p style="opacity:0.85;">📧 vibuv85@gmail.com</p>
     </div>
 
-    <div class="card" style="background:#222 !important; padding:20px; margin:20px auto; display:inline-block; border-radius:10px;">
-      <img id="founder3"
-           src="https://via.placeholder.com/150?text=Developer"
-           style="width:150px;height:150px;object-fit:cover;display:block;margin:auto;border-radius:10px;">
-      <br>
-      <label>
-        Add / Change Image
-        <input type="file" hidden accept="image/*" onchange="changeImg(event,'founder3')">
-      </label>
-      <h3 style="margin:10px 0; color:white !important;">S. Lavanya</h3>
-      <p style="color:white !important;"><b>Assistant Developer</b></p>
-      <p style="color:white !important;">📧 lavanyasoundhariya67@gmail.com</p>
-    </div>
+  </div>
 
-    <br>
-    <button onclick="go('more')" style="margin-top:20px; padding:10px 20px; font-size:1em; cursor:pointer; background:#444; color:white !important; border:none; border-radius:5px;">⬅ Back</button>
+  <div style="text-align:center;">
+    <button onclick="go('more')" style="margin-top:40px;padding:12px 28px;font-size:1em;background:#333;color:white;border:none;border-radius:8px;cursor:pointer;">
+      ⬅ Back
+    </button>
   </div>
 </div>
 <script>
@@ -343,3 +398,4 @@ go('home');
 
 
        how many type of software launage did this code uses
+
